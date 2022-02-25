@@ -21,4 +21,8 @@ public class CategoryServices {
     public List<Category> findAll(){
          return repository.findAll();
     }
+    public Category insert (Category category){
+         category.setId(null);
+         return repository.save(category);
+    }
 }
