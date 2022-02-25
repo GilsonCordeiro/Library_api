@@ -2,6 +2,7 @@ package com.api_test.book.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_book")
@@ -15,15 +16,21 @@ public class Book implements Serializable {
     private String name;
     private String text;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Category category;
+
     public Book() {
     }
 
-    public Book(Long id, String title, String name, String text) {
+    public Book(Long id, String title, String name, String text, Category category) {
         this.id = id;
         this.title = title;
         this.name = name;
         this.text = text;
+        this.category = category;
     }
+
     public Long getId() {
         return id;
     }
@@ -54,5 +61,26 @@ public class Book implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id.equals(book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

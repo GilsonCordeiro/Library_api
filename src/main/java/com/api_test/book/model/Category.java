@@ -3,6 +3,9 @@ package com.api_test.book.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_category")
@@ -15,6 +18,8 @@ public class Category implements Serializable {
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "category")
+    private List<Book> books = new ArrayList<>();
     public Category() {
     }
 
@@ -46,5 +51,18 @@ public class Category implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return id.equals(category.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
