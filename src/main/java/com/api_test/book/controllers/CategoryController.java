@@ -1,40 +1,67 @@
 package com.api_test.book.controllers;
 
-import com.api_test.book.dto.CategoryDto;
-import com.api_test.book.model.Book;
-import com.api_test.book.model.Category;
-import com.api_test.book.services.CategoryServices;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.api_test.book.dto.CategoryDTO;
+import com.api_test.book.dto.CategoryFilterDTO;
+import com.api_test.book.dto.CategoryFormDTO;
+import com.api_test.book.dto.CategoryGridDTO;
+import com.api_test.book.service.CategoryService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/api/categories")
 public class CategoryController {
 
-    @Autowired
-    CategoryServices services;
-    @GetMapping("/{id}")
-    public ResponseEntity<Category> findById(@PathVariable Long id){
-        Category obj = services.findById(id);
-        return ResponseEntity.ok().body(obj);
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDto>> findall(){
-        List<Category> list = services.findAll();
-        List<CategoryDto> listDto = list.stream().map(obj -> new CategoryDto(obj)).collect(Collectors.toList());
-        return ResponseEntity.ok().body(listDto);
+    public ResponseEntity<List<CategoryDTO>> findAll() {
+        return ResponseEntity.ok(categoryService.findAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(categoryService.findById(id));
+    }
+
+    @PostMapping("/filter")
+    public ResponseEntity<Page<CategoryGridDTO>> filter(@RequestBody CategoryFilterDTO filter,
+                                                         @RequestParam(defaultValue = "0") int pageNumber,
+                                                         @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        return ResponseEntity.ok(categoryService.findByFilter(filter, pageRequest));
+    }
+
     @PostMapping
-    public ResponseEntity<Category> insert(@RequestBody Category category){
-        category = services.insert(category);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId()).toUri();
-        return ResponseEntity.created(uri).body(category);
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryFormDTO form) {
+        CategoryDTO result = categoryService.save(form);
+        return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryFormDTO form) {
+        CategoryDTO result = categoryService.update(id, form);
+        return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        categoryService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<CategoryDTO> toggleAtivo(@PathVariable Long id, @RequestBody Boolean flag) {
+        CategoryDTO result = categoryService.toggleAtivo(id, flag);
+        return ResponseEntity.ok(result);
     }
 }

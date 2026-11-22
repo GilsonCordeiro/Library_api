@@ -1,0 +1,103 @@
+INSERT INTO tb_category(name, description) VALUES ('Informática','Livro de informática');
+INSERT INTO tb_category(name, description) VALUES ('Matemática','Livro de matemática');
+INSERT INTO tb_category(name, description) VALUES ('Geografia','Território Brasileiro');
+
+
+
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES ('Algoritmos Log', 'Alberto Edenn', 'Lorem ipsum...', 1);
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES ('Php+Mysql', 'Thiago Blue', 'Lorem ipsum...', 1);
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES ('Python', 'Ellen Pink', 'Lorem ipsum...', 1);
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES ('Spring Boot + Angular', 'Daniela Green', 'Lorem ipsum...', 1);
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES ('Apreendendo com os múmeros', 'Robson Tims', 'Lorem ipsum...', 2);
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES ('Equações Legais', 'Edenn Braw', 'Lorem ipsum...', 2);
+
+INSERT INTO tb_category(name, description) VALUES
+('Romance', 'Livros de romance e histórias de amor'),
+('Ficção', 'Livros de ficção científica e narrativas imaginárias'),
+('Filosofia', 'Livros sobre pensamento filosófico e reflexões humanas'),
+('Religião', 'Livros sobre espiritualidade, fé e religiões'),
+('Histórias Infantis', 'Livros de histórias e contos para crianças');
+
+-- ==========================================
+-- ROMANCE (categoria_id = 12)
+-- ==========================================
+
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES
+('Orgulho e Preconceito', 'Jane Austen', 'Uma história sobre amor, orgulho e diferenças sociais.', 12),
+('O Amor nos Tempos do Cólera', 'Gabriel García Márquez', 'Uma narrativa sobre um amor que resiste ao tempo.', 12),
+('Como Eu Era Antes de Você', 'Jojo Moyes', 'Uma história emocionante sobre amor e escolhas.', 12),
+('A Culpa é das Estrelas', 'John Green', 'Dois jovens descobrem o amor enquanto enfrentam desafios.', 12),
+('Um Dia', 'David Nicholls', 'A história de duas pessoas ao longo de muitos anos.', 12),
+('Diário de uma Paixão', 'Nicholas Sparks', 'Uma história de amor que atravessa gerações.', 12),
+('A Cinco Passos de Você', 'Rachael Lippincott', 'Dois jovens se apaixonam apesar das dificuldades.', 12),
+('Jane Eyre', 'Charlotte Brontë', 'Uma jovem enfrenta desafios em busca de amor e liberdade.', 12),
+('O Morro dos Ventos Uivantes', 'Emily Brontë', 'Uma história intensa de paixão e vingança.', 12),
+('Eleanor e Park', 'Rainbow Rowell', 'Dois adolescentes encontram o amor de maneira inesperada.', 12);
+
+
+-- ==========================================
+-- FICÇÃO (categoria_id = 13)
+-- ==========================================
+
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES
+('1984', 'George Orwell', 'Uma sociedade controlada por um governo totalitário.', 13),
+('Fahrenheit 451', 'Ray Bradbury', 'Um futuro onde os livros são proibidos.', 13),
+('Duna', 'Frank Herbert', 'Uma aventura em um planeta desértico e misterioso.', 13),
+('Fundação', 'Isaac Asimov', 'Uma saga sobre o futuro da humanidade e grandes impérios.', 13),
+('Eu, Robô', 'Isaac Asimov', 'Contos sobre robôs e inteligência artificial.', 13),
+('A Máquina do Tempo', 'H. G. Wells', 'Uma viagem extraordinária através do tempo.', 13),
+('Viagem ao Centro da Terra', 'Júlio Verne', 'Uma expedição fantástica ao interior do planeta.', 13),
+('O Guia do Mochileiro das Galáxias', 'Douglas Adams', 'Uma aventura divertida pelo universo.', 13),
+('Jogos Vorazes', 'Suzanne Collins', 'Uma jovem luta pela sobrevivência em uma competição mortal.', 13),
+('A Guerra dos Mundos', 'H. G. Wells', 'Uma invasão extraterrestre ameaça a humanidade.', 13);
+
+
+-- ==========================================
+-- FILOSOFIA (categoria_id = 14)
+-- ==========================================
+
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES
+('A República', 'Platão', 'Uma reflexão sobre justiça e organização da sociedade.', 14),
+('O Mundo de Sofia', 'Jostein Gaarder', 'Uma introdução à história da filosofia.', 14),
+('Meditações', 'Marco Aurélio', 'Reflexões sobre virtude, vida e sabedoria.', 14),
+('Assim Falou Zaratustra', 'Friedrich Nietzsche', 'Uma obra sobre valores e transformação humana.', 14),
+('O Príncipe', 'Nicolau Maquiavel', 'Reflexões sobre poder e política.', 14),
+('Ética a Nicômaco', 'Aristóteles', 'Uma investigação sobre virtude e felicidade.', 14),
+('Discurso do Método', 'René Descartes', 'Reflexões sobre razão e conhecimento.', 14),
+('O Mito de Sísifo', 'Albert Camus', 'Uma reflexão sobre o absurdo da existência.', 14),
+('A Arte da Guerra', 'Sun Tzu', 'Estratégias e reflexões sobre conflitos e decisões.', 14),
+('Além do Bem e do Mal', 'Friedrich Nietzsche', 'Uma crítica aos valores morais tradicionais.', 14);
+
+
+-- ==========================================
+-- RELIGIÃO (categoria_id = 15)
+-- ==========================================
+
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES
+('A Bíblia Sagrada', 'Diversos Autores', 'Textos fundamentais da tradição cristã.', 15),
+('O Livro dos Espíritos', 'Allan Kardec', 'Obra fundamental da doutrina espírita.', 15),
+('O Evangelho Segundo o Espiritismo', 'Allan Kardec', 'Reflexões sobre ensinamentos morais do cristianismo.', 15),
+('O Poder da Oração', 'James Martin', 'Reflexões sobre oração e espiritualidade.', 15),
+('O Monge e o Executivo', 'James C. Hunter', 'Uma narrativa sobre liderança e valores humanos.', 15),
+('Confissões', 'Santo Agostinho', 'Relatos sobre fé, vida e espiritualidade.', 15),
+('Imitação de Cristo', 'Tomás de Kempis', 'Reflexões sobre espiritualidade cristã.', 15),
+('O Alcorão', 'Diversos Autores', 'Texto sagrado central do islamismo.', 15),
+('O Livro Tibetano do Viver e do Morrer', 'Sogyal Rinpoche', 'Reflexões sobre vida, morte e espiritualidade budista.', 15),
+('A Cabana', 'William P. Young', 'Uma narrativa ficcional sobre fé, perdão e esperança.', 15);
+
+
+-- ==========================================
+-- HISTÓRIAS INFANTIS (categoria_id = 16)
+-- ==========================================
+
+INSERT INTO tb_book(title, name, text, categoria_id) VALUES
+('O Pequeno Príncipe', 'Antoine de Saint-Exupéry', 'Uma história sobre amizade, amor e descobertas.', 16),
+('Alice no País das Maravilhas', 'Lewis Carroll', 'Uma menina vive aventuras em um mundo fantástico.', 16),
+('O Patinho Feio', 'Hans Christian Andersen', 'Um conto sobre aceitação e descoberta de si mesmo.', 16),
+('Chapeuzinho Vermelho', 'Irmãos Grimm', 'Uma menina atravessa a floresta para visitar sua avó.', 16),
+('Os Três Porquinhos', 'Joseph Jacobs', 'Três irmãos constroem casas para se proteger do lobo.', 16),
+('Pinóquio', 'Carlo Collodi', 'A aventura de um boneco de madeira que deseja ser menino.', 16),
+('Peter Pan', 'J. M. Barrie', 'Um menino que não quer crescer vive aventuras mágicas.', 16),
+('O Mágico de Oz', 'L. Frank Baum', 'Dorothy viaja por uma terra cheia de aventuras.', 16),
+('A Bela e a Fera', 'Jeanne-Marie Leprince de Beaumont', 'Uma história sobre amor e beleza interior.', 16),
+('João e Maria', 'Irmãos Grimm', 'Dois irmãos enfrentam desafios em uma floresta encantada.', 16);
