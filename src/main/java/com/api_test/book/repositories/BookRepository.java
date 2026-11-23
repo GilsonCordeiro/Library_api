@@ -14,6 +14,10 @@ import java.math.BigDecimal;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
+    long countByAtivoTrue();
+
+    long countByAtivoFalse();
+
     @Query("SELECT b FROM Book b WHERE b.ativo = true " +
             "AND (:title IS NULL OR LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%'))) " +
             "AND (:author IS NULL OR LOWER(b.author) LIKE LOWER(CONCAT('%', :author, '%'))) " +

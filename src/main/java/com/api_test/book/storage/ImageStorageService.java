@@ -1,5 +1,6 @@
 package com.api_test.book.storage;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,14 +13,19 @@ import java.util.UUID;
 @Service
 public class ImageStorageService {
 
-    private final Path uploadDir = Paths.get("uploads");
+    private final Path uploadDir;
 
-    public ImageStorageService() {
+    public ImageStorageService(@Value("${app.upload.dir:uploads}") String uploadDirectory) {
+        this.uploadDir = Paths.get(uploadDirectory).toAbsolutePath().normalize();
         try {
             Files.createDirectories(uploadDir);
         } catch (IOException e) {
             throw new RuntimeException("Could not create upload directory", e);
         }
+    }
+
+    public Path getUploadDir() {
+        return uploadDir;
     }
 
     public String store(MultipartFile file) {
